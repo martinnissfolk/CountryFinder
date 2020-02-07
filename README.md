@@ -1,5 +1,14 @@
 # CountryFinder
 
+## Description
+
+A React application where the user can search for countries, list the search result and view details about an individual country. It features 
+
+* fetch from external API
+* routing
+* react hooks
+* forms
+
 ## Requirements
 
 * npm
