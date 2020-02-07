@@ -9,10 +9,10 @@
 
 First run this command to install all modules
 
-  npm install
+    npm install
   
 Then to run application
 
-  npm start
+    npm start
   
  Application is launched at http://localhost:3000/
