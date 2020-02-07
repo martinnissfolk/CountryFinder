@@ -3,25 +3,34 @@ import { useState, useEffect } from "react";
 export default function useSearchText(initialValue){
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
-    const [error, setError] = useState({});
+    const [error, setError] = useState(null);   
 
-    useEffect(() => {
-        console.log("Email value is :" +query);
-        if(!query) {
-            console.log("the string is null or empty");        
+    useEffect(() => {        
+        if(!query.trimLeft()) {
+            //query is null or empty       
         }
         else
         {
             fetch(`https://restcountries.eu/rest/v2/name/` + query)
-            .then(response => {
-                //console.log(response.json());
+            .then(response => {                
                 response.json()
-                .then( data => setResults(data))
+                .then( data => 
+                    {
+                        if(data.status === 404)
+                        {
+                            // no matches where found
+                        }                        
+                        setResults(data)
+                    })
             })
-            .catch(error => setError(error))            
+            .catch(error => 
+                {
+                    //error has occurred
+                    setError(error)
+                })       
         }
         
     },[query]);    
 
-    return [query, setQuery, results]
+    return [query, setQuery, results, error]
 }

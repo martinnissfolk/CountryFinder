@@ -1,19 +1,16 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
-    const Countries = ({ countries }) => {
-      return (
-        <div>
-          <center><h1>Country List</h1></center>
-          {countries.map((country) => (
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{country.name}</h5>
-                               
-              </div>
-            </div>
-          ))}
-        </div>
-      )
-    };
+const Countries = ({results}) => {
+  return (
+    <div className="list-container">
+      <ul>        
+      {
+          results && results.length > 0 && results.map((item, index) => <li className="App-link" key={index} ><Link to={item.name}>{item.name}</Link></li>)
+      }
+      </ul>
+    </div>
+  )
+};
 
-    export default Countries
+export default Countries

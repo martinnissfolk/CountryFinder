@@ -13,7 +13,7 @@ function Detail({
   useEffect(() => {
       if(!id)
       {
-        console.log("the id is null or empty"); 
+        //id is null or empty 
       }
       else
       {
@@ -37,15 +37,20 @@ function Detail({
 
   return (
     <div className="App">
-        <div className="container">
-        <div className="card">
-            <h1>{data.name}</h1>
-            <div className="img-container">
-            capital: {data.capital}
-            </div>
+      <main>        
+          <h1>{data.name}</h1>
+          <div className="list-container">
+            <img src={data.flag} alt="country flag" height="120" width="120" /> 
+            <ul>
+              <li>Capital: {data.capital}</li>
+              <li>Region: {data.region}</li>
+              <li>Population: {data.population}</li>                
+            </ul>              
+          </div>
+          <div>
             <Link to="/">Return to List View</Link>
-        </div>
-        </div>
+          </div>
+      </main>
     </div>
   );
 }
